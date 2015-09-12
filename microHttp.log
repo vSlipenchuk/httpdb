@@ -1,0 +1,10 @@
+[2015-09-12T19:41:45] (srv) ...starting microHttp {port:80,logLevel:1,rootDir:'./',keepAlive:1,Limit:1000000},
+   mimes:'.htm,.html=text/html;charset=windows-1251&.js=text/javascript;charset=windows-1251'
+[2015-09-12T19:41:45] (core) .. listener is ready, Ctrl+C to abort
+[2015-09-12T20:04:27] (srv) ...starting microHttp {port:80,logLevel:1,rootDir:'./',keepAlive:1,Limit:1000000},
+   mimes:'.htm,.html=text/html;charset=windows-1251&.js=text/javascript;charset=windows-1251'
+[2015-09-12T20:04:27] (httpSrv)  -fail listen port 80
+[2015-09-12T20:04:27] (core) -FAIL start listener on port 80
+[2015-09-12T20:04:38] (srv) ...starting microHttp {port:80,logLevel:1,rootDir:'./',keepAlive:1,Limit:1000000},
+   mimes:'.htm,.html=text/html;charset=windows-1251&.js=text/javascript;charset=windows-1251'
+[2015-09-12T20:04:38] (core) .. listener is ready, Ctrl+C to abort
