@@ -8,3 +8,6 @@
 [2015-09-12T20:04:38] (srv) ...starting microHttp {port:80,logLevel:1,rootDir:'./',keepAlive:1,Limit:1000000},
    mimes:'.htm,.html=text/html;charset=windows-1251&.js=text/javascript;charset=windows-1251'
 [2015-09-12T20:04:38] (core) .. listener is ready, Ctrl+C to abort
+[2015-09-12T20:53:19] (srv) ...starting microHttp {port:80,logLevel:1,rootDir:'./',keepAlive:1,Limit:1000000},
+   mimes:'.htm,.html=text/html;charset=windows-1251&.js=text/javascript;charset=windows-1251'
+[2015-09-12T20:53:19] (core) .. listener is ready, Ctrl+C to abort
