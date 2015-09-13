@@ -169,7 +169,8 @@ return 0;
 }
 
 int onDbRequest(Socket *sock, vssHttp *req, SocketMap *map); // db extension here
-
+int onDbVarGet(Socket *sock, vssHttp *req, SocketMap *map) ; // get val from val
+int onDbVarSet(Socket *sock, vssHttp *req, SocketMap *map) ; // set
 
 int onHttpStat(Socket *sock, vssHttp *req, SocketMap *map) { // Генерация статистики по серверу
 char buf[1024];
@@ -194,7 +195,7 @@ int logLevel = 1;
 int keepAlive = 1;
 int runTill = 0;
 char *rootDir = "./";
-char *mimes=".htm,.html=text/html;charset=windows-1251&.js=text/javascript;charset=windows-1251";
+char *mimes=".htm,.html=text/html;charset=utf8&.js=text/javascript;charset=utf8";
 
 
 int MicroHttpMain(int npar,char **par) {
@@ -228,15 +229,17 @@ IFLOG(srv,0,"...starting microHttp {port:%d,logLevel:%d,rootDir:'%s',keepAlive:%
   port,logLevel,rootDir,keepAlive,Limit,
   mimes);
 //printf("...Creating a http server\n");
-srv->defmime= vssCreate("text/plain;charset=windows-1251",-1);
+srv->defmime= vssCreate("text/plain;charset=utf8",-1);
 httpSrvAddMimes(srv,mimes);
 //httpMime *m = httpSrvGetMime(srv,vssCreate("1.HHtm",-1));printf("Mime here %*.*s\n",VSS(m->mime));
 //httpSrvAddFS(srv,"/c/","c:/",0); // Adding some FS mappings
 httpSrvAddFS(srv,"/",rootDir,0); // Adding some FS mappings
 
 httpSrvAddMap(srv, strNew("/.stat",-1), onHttpStat, 0);
-httpSrvAddMap(srv, strNew("/.db",-1), onDbRequest, 0);
 
+httpSrvAddMap(srv, strNew("/.db",-1), onDbRequest, 0);
+httpSrvAddMap(srv, strNew("/var.get",-1), onDbVarGet, 0);
+httpSrvAddMap(srv, strNew("/var.set",-1), onDbVarSet, 0);
 
 if (httpSrvListen(srv,port)<=0) { // Starts listen port
    Logf("-FAIL start listener on port %d\n",port); return 1;

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1442074831 source:/prj/httpdb/common.c
+1442137179 source:/prj/httpdb/common.c
 	"vos.c"
 	"logger.c"
 	"exe.c"
@@ -7,7 +7,7 @@
 	"std_sock.c"
 	"sock.c"
 	"../vos/httpSrv.c"
-	"coders.c"
+	"../vos/coders.c"
 	"vss.c"
 	"vdb.c"
 	"httpTest.c"
@@ -36,7 +36,7 @@
 	<string.h>
 	<time.h>
 
-1442077341 source:/prj/httpdb/main.c
+1442137744 source:/prj/httpdb/main.c
 	<stdio.h>
 	<stdlib.h>
 	"vos.h"
@@ -44,7 +44,7 @@
 	"httpSrv.h"
 	"vss.h"
 
-1442074705 /prj/httpdb/httpTest.c
+1442137673 /prj/httpdb/httpTest.c
 	"httpSrv.h"
 	"logger.c"
 	"std_sock.c"
@@ -154,4 +154,9 @@
 	<time.h>
 	<string.h>
 	<stdio.h>
+
+1442137636 source:/prj/httpdb/httpdb_var.c
+	"vdb.h"
+	"httpSrv.h"
+	"vss.h"
 

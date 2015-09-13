@@ -5,7 +5,7 @@
 #include "std_sock.c"
 #include "sock.c"
 #include "../vos/httpSrv.c"
-#include "coders.c"
+#include "../vos/coders.c"
 #include "vss.c"
 
 #include "vdb.c"

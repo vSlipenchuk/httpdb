@@ -16,7 +16,7 @@
 
 */
 
-database *db;
+extern database *db; // on httpdb_var
 
 void strCatQ(char **str,char *text,int len) { // cat quoted
 if (len<0) len = strlen(text);
@@ -70,8 +70,10 @@ if (strncmp(r.data,"select",6)==0) { // get a data
   } else { //exec a result
     if (db_exec_once(db,sql)<=0) { // error here
        SocketPrintHttp(sock,req,"-%s",db->error);
+       db_rollback(db);
         return 1;
     }
+    db_commit(db); // anyqway
     SocketPrintHttp(sock,req,"+1 OK");
         return 1;
   }
