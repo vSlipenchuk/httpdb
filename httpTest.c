@@ -171,6 +171,8 @@ return 0;
 int onDbRequest(Socket *sock, vssHttp *req, SocketMap *map); // db extension here
 int onDbVarGet(Socket *sock, vssHttp *req, SocketMap *map) ; // get val from val
 int onDbVarSet(Socket *sock, vssHttp *req, SocketMap *map) ; // set
+int onWebSocket(Socket *sock, vssHttp *req, SocketMap *map); // WebSocket on /event
+int onBroadcast(Socket *sock, vssHttp *req, SocketMap *map); // broadcasting thru websockets
 
 int onHttpStat(Socket *sock, vssHttp *req, SocketMap *map) { // Генерация статистики по серверу
 char buf[1024];
@@ -195,7 +197,7 @@ int logLevel = 1;
 int keepAlive = 1;
 int runTill = 0;
 char *rootDir = "./";
-char *mimes=".htm,.html=text/html;charset=utf8&.js=text/javascript;charset=utf8";
+char *mimes=".htm,.html=text/html;charset=utf8&.js=text/javascript;charset=utf8&.css=text/css";
 
 
 int MicroHttpMain(int npar,char **par) {
@@ -240,13 +242,33 @@ httpSrvAddMap(srv, strNew("/.stat",-1), onHttpStat, 0);
 httpSrvAddMap(srv, strNew("/.db",-1), onDbRequest, 0);
 httpSrvAddMap(srv, strNew("/var.get",-1), onDbVarGet, 0);
 httpSrvAddMap(srv, strNew("/var.set",-1), onDbVarSet, 0);
+httpSrvAddMap(srv, strNew("/event",-1), onWebSocket, 0);
+httpSrvAddMap(srv, strNew("/broadcast",-1), onBroadcast, 0);
 
 if (httpSrvListen(srv,port)<=0) { // Starts listen port
    Logf("-FAIL start listener on port %d\n",port); return 1;
    }
 Logf(".. listener is ready, Ctrl+C to abort\n");
 if (runTill) srv->runTill = TimeNow + runTill;
-httpSrvProcess(srv); // Run All messages till CtrlC...
+ //httpSrvProcess(srv); // Run All messages till CtrlC...
+
+time_t *reported;
+
+while(!aborted) {
+  TimeUpdate(); // TimeNow & szTimeNow
+  int cnt = SocketPoolRun(&srv->srv);
+  /*if (reported != TimeNow) {
+      reported = TimeNow;
+      //wsBroadcast(&srv->srv, szTimeNow); // tmp - broadcast server time
+     }*/
+  //printf("SockPoolRun=%d time:%s\n",cnt,szTimeNow); msleep(1000);
+  RunSleep(cnt); // Empty socket circle -)))
+
+
+  if (srv->runTill && TimeNow>=srv->runTill) break; // Done???
+  }
+
+
 TimeUpdate();
 IFLOG(srv,0,"...stop microHttp, done:{connects:%d,requests:%d,runtime:%d}\n",
      srv->srv.connects,srv->srv.requests,TimeNow - srv->created);

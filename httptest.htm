@@ -64,7 +64,19 @@ id('res').value=text;
  }
  
  }
+ 
+ 
 </script>
+
+
+
+<script>
+    ws = new WebSocket("ws://localhost/event");
+    ws.onopen = function() { alert("Connection opened...") };
+    ws.onclose = function() { alert("Connection closed...") };
+    ws.onmessage = function(evt) { alert("Message:"+evt.data+"!"); };
+</script>
+
 
 <h2> database request: </h2>
 <button onclick="dbRequest()"> query database</button><br>
