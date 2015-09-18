@@ -245,6 +245,9 @@ httpSrvAddMap(srv, strNew("/var.set",-1), onDbVarSet, 0);
 httpSrvAddMap(srv, strNew("/event",-1), onWebSocket, 0);
 httpSrvAddMap(srv, strNew("/broadcast",-1), onBroadcast, 0);
 
+//httpSrvAddMap(srv, strNew("/search",-1), wwwGetForwarder, "ya.ru");
+
+
 if (httpSrvListen(srv,port)<=0) { // Starts listen port
    Logf("-FAIL start listener on port %d\n",port); return 1;
    }

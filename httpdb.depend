@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1442427861 source:/prj/httpdb/common.c
+1442607059 source:/prj/httpdb/common.c
 	"vos.c"
 	"logger.c"
 	"exe.c"
@@ -12,7 +12,7 @@
 	"vdb.c"
 	"httpTest.c"
 
-1442071877 /prj/vos/vos.c
+1442574684 /prj/vos/vos.c
 	"vos.h"
 	"pthread.h"
 	"stdlib.h"
@@ -20,8 +20,9 @@
 	<sys/time.h>
 	<stdio.h>
 	<sys/resource.h>
+	"vos_win.c"
 
-1442071877 /prj/vos/vos.h
+1442574684 /prj/vos/vos.h
 	"vtypes.h"
 	<fcntl.h>
 	<netdb.h>
@@ -30,13 +31,14 @@
 	<windows.h>
 	<unistd.h>
 
-1442071877 /prj/vos/vtypes.h
+1442574684 /prj/vos/vtypes.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<time.h>
+	<windows.h>
 
-1442137744 source:/prj/httpdb/main.c
+1442608727 source:/prj/httpdb/main.c
 	<stdio.h>
 	<stdlib.h>
 	"vos.h"
@@ -44,7 +46,7 @@
 	"httpSrv.h"
 	"vss.h"
 
-1442522248 /prj/httpdb/httpTest.c
+1442608460 /prj/httpdb/httpTest.c
 	"httpSrv.h"
 	"logger.c"
 	"std_sock.c"
@@ -91,9 +93,10 @@
 	<stdarg.h>
 	"vos.h"
 
-1442073629 /prj/vos/std_sock.c
+1442574684 /prj/vos/std_sock.c
 	"vos.h"
-	"mutex-1.1.c"
+	"vtypes.h"
+	<sys/stat.h>
 
 1442071877 /prj/vos/exe.c
 	"vtypes.h"
@@ -104,24 +107,27 @@
 	"sock.h"
 	<stdarg.h>
 
-1442071877 /prj/vos/httpSrv.c
+1442574684 /prj/vos/httpSrv.c
 	"httpSrv.h"
 	<stdarg.h>
+	<fcntl.h>
 	<dirent.h>
 
-1442071877 /prj/vos/vs0.c
+1442574684 /prj/vos/vs0.c
 	<fcntl.h>
 	"vs0.h"
 	"vos.h"
+	<sys/stat.h>
 	<fcntl.h>
 
 1442071877 /prj/vos/vss.c
 	"vss.h"
 	"vos.h"
 
-1442071877 /prj/vos/coders.c
+1442574684 /prj/vos/coders.c
 	"coders.h"
 	<stdarg.h>
+	"vtypes.h"
 
 1442071926 /prj/vdb/vdb.c
 	"vdb-2.2.c"
@@ -167,4 +173,18 @@
 
 1442433179 source:/prj/httpdb/wsSrv.c
 	"sock.h"
+
+1442574684 /prj/vos/vos_win.c
+	<stdio.h>
+	<stdlib.h>
+	<winsock.h>
+	<time.h>
+	<sys/types.h>
+	<sys/stat.h>
+	"vos.h"
+	<psapi.h>
+	<windows.h>
+
+1442607810 source:/prj/httpdb/http_forward.c
+	"vos.h"
 

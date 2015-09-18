@@ -89,6 +89,9 @@ return 1;
 }
 
 int main(int npar,char **par) {
+
+//    return httpGetTest();
+
     db = db_new();
     if (db_connect_string(db,"/@my.db#./sq3u.so")<=0) {
         printf("Fail connect to db err=%s\n",db->error);
