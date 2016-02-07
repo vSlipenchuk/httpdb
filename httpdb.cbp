@@ -13,15 +13,34 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-Wno-pointer-sign" />
+					<Add option="-Wno-strict-aliasing" />
+					<Add directory="../vos/" />
+					<Add directory="../vdb" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add library="pthread" />
+					<Add library="dl" />
+					<Add library="crypto" />
 				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="common.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="http_forward.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="http_ws.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="httpdb_var.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

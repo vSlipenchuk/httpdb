@@ -1,10 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "vos.h"
+#include "../vos/vos.h"
 
 #include "../vdb/vdb.h"
 #include "httpSrv.h"
 #include "vss.h"
+
+/*
+-Wno-pointer-sign
+-Wno-strict-aliasing
+*/
 
 /*
 
