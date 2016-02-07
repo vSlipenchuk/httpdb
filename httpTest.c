@@ -265,7 +265,8 @@ while(!aborted) {
       //wsBroadcast(&srv->srv, szTimeNow); // tmp - broadcast server time
      }*/
   //printf("SockPoolRun=%d time:%s\n",cnt,szTimeNow); msleep(1000);
-  RunSleep(cnt); // Empty socket circle -)))
+  //RunSleep(cnt); // Empty socket circle -)))
+  if (!cnt) msleep(10);
 
 
   if (srv->runTill && TimeNow>=srv->runTill) break; // Done???

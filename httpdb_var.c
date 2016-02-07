@@ -5,9 +5,13 @@
 /*
 
 Suppose usage of:
- 1. create table val(id char(20),name char(20),val char(80),modified datetime);
-    create unique index i_val on val(id,name);
-    insert into val(id,name,val,modified) values('001','myname','new_one',date('now'));
+ 1.
+sqlite3 my.db << EOF
+create table val(id char(20),name char(20),val char(80),modified datetime);
+create unique index i_val on val(id,name);
+insert into val(id,name,val,modified) values('001','myname','new_one',date('now'));
+select * from val;
+EOF
  2.
 
 Usage wget syntax:
