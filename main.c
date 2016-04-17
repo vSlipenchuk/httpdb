@@ -6,6 +6,8 @@
 #include "httpSrv.h"
 #include "vss.h"
 
+#include "tcpEventer.h"
+
 /*
 -Wno-pointer-sign
 -Wno-strict-aliasing
@@ -103,6 +105,15 @@ int main(int npar,char **par) {
         return 1;
        }
     printf("db connected OK\n");
+
+//return tcpEventerMain(npar,par);
+
+tcpEventerMainBegin(); // create an eventer
+/*
+    tcpEventer *e  = tcpEventerCreate("");
+      e->logLevel=10; e->srv
+      tcpEventerListen(e,2020); tcpEventerProcess(e); // TEST - forewer
+*/
 
     return MicroHttpMain(npar,par);
     //printf("Hello world!\n");

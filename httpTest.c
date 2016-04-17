@@ -1,4 +1,6 @@
 /*
+
+ --- it is LOCAL copy for http - db with new requesters build in
  same simple http test + added .db urls for mapping
 
 */
@@ -173,6 +175,9 @@ int onDbVarGet(Socket *sock, vssHttp *req, SocketMap *map) ; // get val from val
 int onDbVarSet(Socket *sock, vssHttp *req, SocketMap *map) ; // set
 int onWebSocket(Socket *sock, vssHttp *req, SocketMap *map); // WebSocket on /event
 int onBroadcast(Socket *sock, vssHttp *req, SocketMap *map); // broadcasting thru websockets
+int onEventHttp(Socket *sock, vssHttp *req, SocketMap *map); // broadcasting thru websockets
+
+
 
 int onHttpStat(Socket *sock, vssHttp *req, SocketMap *map) { // Генерация статистики по серверу
 char buf[1024];
@@ -245,6 +250,9 @@ httpSrvAddMap(srv, strNew("/var.set",-1), onDbVarSet, 0);
 httpSrvAddMap(srv, strNew("/event",-1), onWebSocket, 0);
 httpSrvAddMap(srv, strNew("/broadcast",-1), onBroadcast, 0);
 
+httpSrvAddMap(srv, strNew("/EVENT",-1), onEventHttp, 0); // move to eventer
+
+
 //httpSrvAddMap(srv, strNew("/search",-1), wwwGetForwarder, "ya.ru");
 
 
@@ -260,6 +268,7 @@ time_t *reported;
 while(!aborted) {
   TimeUpdate(); // TimeNow & szTimeNow
   int cnt = SocketPoolRun(&srv->srv);
+   cnt+=TheTcpEventerRun(); // upper
   /*if (reported != TimeNow) {
       reported = TimeNow;
       //wsBroadcast(&srv->srv, szTimeNow); // tmp - broadcast server time

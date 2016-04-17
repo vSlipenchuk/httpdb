@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1442607059 source:/prj/httpdb/common.c
+1460920925 source:/prj/httpdb/common.c
 	"vos.c"
 	"logger.c"
 	"exe.c"
@@ -10,7 +10,6 @@
 	"../vos/coders.c"
 	"../vos/vss.c"
 	"vdb.c"
-	"httpTest.c"
 
 1442574684 /prj/vos/vos.c
 	"vos.h"
@@ -22,7 +21,7 @@
 	<sys/resource.h>
 	"vos_win.c"
 
-1442574684 /prj/vos/vos.h
+1447278652 /prj/vos/vos.h
 	"vtypes.h"
 	<fcntl.h>
 	<netdb.h>
@@ -31,20 +30,21 @@
 	<windows.h>
 	<unistd.h>
 
-1442574684 /prj/vos/vtypes.h
+1447278652 /prj/vos/vtypes.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<time.h>
 	<windows.h>
 
-1442608727 source:/prj/httpdb/main.c
+1460926445 source:/prj/httpdb/main.c
 	<stdio.h>
 	<stdlib.h>
-	"vos.h"
+	"../vos/vos.h"
 	"../vdb/vdb.h"
 	"httpSrv.h"
 	"vss.h"
+	"tcpEventer.h"
 
 1442608460 /prj/httpdb/httpTest.c
 	"httpSrv.h"
@@ -59,32 +59,32 @@
 	"coders.c"
 	<signal.h>
 
-1442071877 /prj/vos/httpSrv.h
+1447278652 /prj/vos/httpSrv.h
 	"vos.h"
 	"sock.h"
 	"vss.h"
 
-1442071877 /prj/vos/sock.h
+1447278652 /prj/vos/sock.h
 	"vos.h"
 	"vs0.h"
 	"vss.h"
 	"logger.h"
 	"vtypes.h"
 
-1442071877 /prj/vos/vs0.h
+1447278652 /prj/vos/vs0.h
 	"vtypes.h"
 	"vss.h"
 
-1442071877 /prj/vos/vss.h
+1447278652 /prj/vos/vss.h
 	"vtypes.h"
 
-1442071877 /prj/vos/logger.h
+1447278652 /prj/vos/logger.h
 	"vs0.h"
 	<stdio.h>
 	<time.h>
 	"coders.h"
 
-1442071877 /prj/vos/coders.h
+1450894981 /prj/vos/coders.h
 	"vtypes.h"
 
 1442071877 /prj/vos/logger.c
@@ -103,11 +103,11 @@
 	"coders.h"
 	"vos.h"
 
-1442071877 /prj/vos/sock.c
+1450735506 /prj/vos/sock.c
 	"sock.h"
 	<stdarg.h>
 
-1442574684 /prj/vos/httpSrv.c
+1447278652 /prj/vos/httpSrv.c
 	"httpSrv.h"
 	<stdarg.h>
 	<fcntl.h>
@@ -120,20 +120,20 @@
 	<sys/stat.h>
 	<fcntl.h>
 
-1442071877 /prj/vos/vss.c
+1447278652 /prj/vos/vss.c
 	"vss.h"
 	"vos.h"
 
-1442574684 /prj/vos/coders.c
+1447278652 /prj/vos/coders.c
 	"coders.h"
 	<stdarg.h>
 	"vtypes.h"
 
-1442071926 /prj/vdb/vdb.c
+1447279104 /prj/vdb/vdb.c
 	"vdb-2.2.c"
 	"vdt-1.0.c"
 
-1442071926 /prj/vdb/vdb-2.2.c
+1447279104 /prj/vdb/vdb-2.2.c
 	"vdb.h"
 	<stdlib.h>
 	<stdio.h>
@@ -142,14 +142,14 @@
 	<dlfcn.h>
 	<link.h>
 
-1442071926 /prj/vdb/vdb.h
+1447279104 /prj/vdb/vdb.h
 	"vtypes.h"
 	<time.h>
 	"windows.h"
 	"u_pb.h"
 	"vds.h"
 
-1442071926 /prj/vdb/vdt-1.0.c
+1447279104 /prj/vdb/vdt-1.0.c
 	"vdb.h"
 	<time.h>
 	<stdio.h>
@@ -161,12 +161,12 @@
 	<string.h>
 	<stdio.h>
 
-1442137636 source:/prj/httpdb/httpdb_var.c
+1454839180 source:/prj/httpdb/httpdb_var.c
 	"vdb.h"
 	"httpSrv.h"
 	"vss.h"
 
-1442434936 source:/prj/httpdb/http_ws.c
+1460926033 source:/prj/httpdb/http_ws.c
 	"httpSrv.h"
 	"vss.h"
 	<openssl/sha.h>
@@ -185,7 +185,7 @@
 	<psapi.h>
 	<windows.h>
 
-1442607810 source:/prj/httpdb/http_forward.c
+1454837969 source:/prj/httpdb/http_forward.c
 	"vos.h"
 
 1454838569 source:/mnt/c/prj/httpdb/main.c
@@ -436,4 +436,133 @@
 	"vdb.h"
 	"httpSrv.h"
 	"vss.h"
+
+1447278652 /prj/vos//vos.h
+	"vtypes.h"
+	<fcntl.h>
+	<netdb.h>
+	<sys/stat.h>
+	<sys/socket.h>
+	<windows.h>
+	<unistd.h>
+
+1447278652 /prj/vos//vtypes.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<windows.h>
+
+1447278652 /prj/vos//httpSrv.h
+	"vos.h"
+	"sock.h"
+	"vss.h"
+
+1447278652 /prj/vos//sock.h
+	"vos.h"
+	"vs0.h"
+	"vss.h"
+	"logger.h"
+	"vtypes.h"
+
+1447278652 /prj/vos//vs0.h
+	"vtypes.h"
+	"vss.h"
+
+1447278652 /prj/vos//vss.h
+	"vtypes.h"
+
+1447278652 /prj/vos//logger.h
+	"vs0.h"
+	<stdio.h>
+	<time.h>
+	"coders.h"
+
+1450894981 /prj/vos//coders.h
+	"vtypes.h"
+
+1447278652 /prj/vos//vos.c
+	"vos.h"
+	"pthread.h"
+	"stdlib.h"
+	"unistd.h"
+	<sys/time.h>
+	<stdio.h>
+	<sys/resource.h>
+	"vos_win.c"
+
+1447278652 /prj/vos//vos_win.c
+	<stdio.h>
+	<stdlib.h>
+	<winsock.h>
+	<time.h>
+	<sys/types.h>
+	<sys/stat.h>
+	"vos.h"
+	<psapi.h>
+	<windows.h>
+
+1447278652 /prj/vos//logger.c
+	"logger.h"
+	<time.h>
+	<stdarg.h>
+	"vos.h"
+
+1454840683 /prj/vos//exe.c
+	"vtypes.h"
+	"coders.h"
+	"vos.h"
+
+1447278652 /prj/vos//vs0.c
+	<fcntl.h>
+	"vs0.h"
+	"vos.h"
+	<sys/stat.h>
+	<fcntl.h>
+
+1447278652 /prj/vos//std_sock.c
+	"vos.h"
+	"vtypes.h"
+	<sys/stat.h>
+
+1460926835 source:/prj/httpdb/httpTest.c
+	"httpSrv.h"
+	"logger.c"
+	"std_sock.c"
+	"exe.c"
+	"sock.c"
+	"httpSrv.c"
+	"vos.c"
+	"vs0.c"
+	"vss.c"
+	"coders.c"
+	<signal.h>
+
+1450735506 /prj/vos//sock.c
+	"sock.h"
+	<stdarg.h>
+
+1447278652 /prj/vos//httpSrv.c
+	"httpSrv.h"
+	<stdarg.h>
+	<fcntl.h>
+	<dirent.h>
+
+1447278652 /prj/vos//vss.c
+	"vss.h"
+	"vos.h"
+
+1447278652 /prj/vos//coders.c
+	"coders.h"
+	<stdarg.h>
+	"vtypes.h"
+
+1460923340 /prj/httpdb/tcpEventer.h
+	"vos.h"
+	"sock.h"
+	"vss.h"
+
+1460927694 source:/prj/httpdb/tcpEventer.c
+	"tcpEventer.h"
+	"httpSrv.h"
 
